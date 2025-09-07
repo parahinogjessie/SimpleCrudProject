@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {   
+    //This is for Login and Logout function
     public function login(Request $request){
         $incomingFields = $request->validate([
             'loginname' => 'required',
@@ -25,6 +26,8 @@ class UserController extends Controller
         auth()->logout();
         return redirect('/');
     }
+
+    //This is for Register function
     public function register(Request $request){
         $incomingFields = $request->validate([
             'name' => ['required', 'min:3', 'max:10', Rule::unique('users', 'name')],
